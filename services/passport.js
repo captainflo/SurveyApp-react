@@ -77,19 +77,19 @@ passport.use(
 passport.use(
   new FacebookStrategy(
     {
-      clientID: keys.instagramClientID,
-      clientSecret: keys.instagramClientSecret,
+      clientID: keys.facebookClientID,
+      clientSecret: keys.facebookClientSecret,
       callbackURL: "/auth/facebook/callback"
     },
     function(accessToken, refreshToken, profile, done) {
       // don't have double User with same profileID
-      User.findOne({ instagramId: profile.id }).then(existingUser => {
+      User.findOne({ facebookId: profile.id }).then(existingUser => {
         if (existingUser) {
           // We already have record with given profile ID
           done(null, existingUser);
         } else {
           // We don't have a user with this ID, make a new record
-          new User({ instagramId: profile.id })
+          new User({ facebookId: profile.id })
             .save()
             .then(user => done(null, user));
         }
