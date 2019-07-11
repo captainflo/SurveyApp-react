@@ -3,7 +3,7 @@ const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const InstagramStrategy = require("passport-instagram").Strategy;
 const FacebookStrategy = require("passport-facebook").Strategy;
 const LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
-const TwitterStrategy = require('passport-twitter-token').Strategy;
+const TwitterStrategy = require('passport-twitter-token');
 const keys = require("../config/keys");
 const mongoose = require("mongoose");
 
