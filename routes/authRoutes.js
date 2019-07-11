@@ -42,6 +42,16 @@ module.exports = app => {
     })
   );
 
+  // Twitter
+  app.get("/auth/twitter", passport.authenticate("twitter"));
+  app.get(
+    "/auth/twitter/callback",
+    passport.authenticate("twitter", {
+      successRedirect: "/",
+      failureRedirect: "/login"
+    })
+  );
+
   // to logout by http request
   app.get("/api/logout", (req, res) => {
     req.logout();

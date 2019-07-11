@@ -3,6 +3,7 @@ const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const InstagramStrategy = require("passport-instagram").Strategy;
 const FacebookStrategy = require("passport-facebook").Strategy;
 const LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
+const TwitterStrategy = require('passport-twitter').Strategy;
 const keys = require("../config/keys");
 const mongoose = require("mongoose");
 
@@ -129,6 +130,35 @@ passport.use(
         } else {
           // We don't have a user with this ID, make a new record
           new User({ linkedinId: profile.id })
+            .save()
+            .then(user => done(null, user));
+        }
+      });
+    }
+  )
+);
+
+// Twitter 
+passport.use(
+  new TwitterStrategy(
+    {
+      clientID: keys.twitterClientID,
+      clientSecret: keys.twitterClientSecret,
+      callbackURL: "/auth/twitter/callback",
+      proxy: true
+    },
+    function(accessToken, refreshToken, profile, done) {
+       console.log('access token',accessToken);
+        console.log('refresh token',refreshToken);
+        console.log('profile:',profile);
+      // don't have double User with same profileID
+      User.findOne({ twitterId: profile.id }).then(existingUser => {
+        if (existingUser) {
+          // We already have record with given profile ID
+          done(null, existingUser);
+        } else {
+          // We don't have a user with this ID, make a new record
+          new User({ twitterId: profile.id })
             .save()
             .then(user => done(null, user));
         }
