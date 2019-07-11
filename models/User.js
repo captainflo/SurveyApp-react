@@ -3,8 +3,8 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
     googleId: String,
-    // instagramId: String,
     facebookId: String,
+    instagramId: String,
     // linkedinId: String
 });
 

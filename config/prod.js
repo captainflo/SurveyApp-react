@@ -6,4 +6,6 @@ module.exports = {
     cookieKey: process.env.COOKIE_KEY,
     facebookClientID: process.env.FACEBOOK_CLIENT_ID,
     facebookClientSecret: process.env.FACEBOOK_CLIENT_SECRET,
+    instagramClientID: process.env.INSTAGRAM_CLIENT_ID,
+    instagramClientSecret: process.env.INSTAGRAM_CLIENT_SECRET,
 };
