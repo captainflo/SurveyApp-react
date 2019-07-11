@@ -2,7 +2,7 @@ const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const InstagramStrategy = require("passport-instagram").Strategy;
 const FacebookStrategy = require("passport-facebook").Strategy;
-// const LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
+const LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
 const keys = require("../config/keys");
 const mongoose = require("mongoose");
 
@@ -109,30 +109,31 @@ passport.use(
 );
 
 // Linkedin 
-// passport.use(
-//   new LinkedInStrategy(
-//     {
-//       clientID: keys.linkedinClientID,
-//       clientSecret: keys.linkedinClientSecret,
-//       callbackURL: "/auth/linkedin/callback"
-//     },
-//     function(accessToken, refreshToken, profile, done) {
-//        console.log('access token',accessToken);
-//         console.log('refresh token',refreshToken);
-//         console.log('profile:',profile);
-//       // don't have double User with same profileID
-//       User.findOne({ linkedinId: profile.id }).then(existingUser => {
-//         if (existingUser) {
-//           // We already have record with given profile ID
-//           done(null, existingUser);
-//         } else {
-//           // We don't have a user with this ID, make a new record
-//           new User({ linkedinId: profile.id })
-//             .save()
-//             .then(user => done(null, user));
-//         }
-//       });
-//     }
-//   )
-// );
+passport.use(
+  new LinkedInStrategy(
+    {
+      clientID: keys.linkedinClientID,
+      clientSecret: keys.linkedinClientSecret,
+      callbackURL: "/auth/linkedin/callback",
+      proxy: true
+    },
+    function(accessToken, refreshToken, profile, done) {
+       console.log('access token',accessToken);
+        console.log('refresh token',refreshToken);
+        console.log('profile:',profile);
+      // don't have double User with same profileID
+      User.findOne({ linkedinId: profile.id }).then(existingUser => {
+        if (existingUser) {
+          // We already have record with given profile ID
+          done(null, existingUser);
+        } else {
+          // We don't have a user with this ID, make a new record
+          new User({ linkedinId: profile.id })
+            .save()
+            .then(user => done(null, user));
+        }
+      });
+    }
+  )
+);
 

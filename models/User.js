@@ -5,7 +5,7 @@ const userSchema = new Schema({
     googleId: String,
     facebookId: String,
     instagramId: String,
-    // linkedinId: String
+    linkedinId: String
 });
 
 mongoose.model('users', userSchema);

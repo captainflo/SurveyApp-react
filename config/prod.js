@@ -8,4 +8,6 @@ module.exports = {
     facebookClientSecret: process.env.FACEBOOK_CLIENT_SECRET,
     instagramClientID: process.env.INSTAGRAM_CLIENT_ID,
     instagramClientSecret: process.env.INSTAGRAM_CLIENT_SECRET,
+    linkedinClientID: process.env.LINKEDIN_CLIENT_ID,
+    linkedinClientSecret: process.env.LINKEDIN_CLIENT_SECRET,
 };
