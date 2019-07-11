@@ -29,9 +29,9 @@ passport.use(
       proxy: true
     },
     (accessToken, refreshToken, profile, done) => {
-      // console.log('access token',accessToken);
-      // console.log('refresh token',refreshToken);
-      // console.log('profile:',profile);
+      console.log('access token',accessToken);
+      console.log('refresh token',refreshToken);
+      console.log('profile:',profile);
 
       // don't have double User with same profileID
       User.findOne({ googleId: profile.id }).then(existingUser => {
@@ -55,9 +55,14 @@ passport.use(
     {
       clientID: keys.instagramClientID,
       clientSecret: keys.instagramClientSecret,
-      callbackURL: "/auth/instagram/callback"
+      callbackURL: "/auth/instagram/callback",
+      proxy: true
     },
     function(accessToken, refreshToken, profile, done) {
+      console.log('access token',accessToken);
+      console.log('refresh token',refreshToken);
+      console.log('profile:',profile);
+
       // don't have double User with same profileID
       User.findOne({ instagramId: profile.id }).then(existingUser => {
         if (existingUser) {
@@ -80,9 +85,13 @@ passport.use(
     {
       clientID: keys.facebookClientID,
       clientSecret: keys.facebookClientSecret,
-      callbackURL: "/auth/facebook/callback"
+      callbackURL: "/auth/facebook/callback",
+      proxy: true
     },
     function(accessToken, refreshToken, profile, done) {
+      console.log('access token',accessToken);
+      console.log('refresh token',refreshToken);
+      console.log('profile:',profile);
       // don't have double User with same profileID
       User.findOne({ facebookId: profile.id }).then(existingUser => {
         if (existingUser) {
