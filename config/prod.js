@@ -10,6 +10,6 @@ module.exports = {
     instagramClientSecret: process.env.INSTAGRAM_CLIENT_SECRET,
     linkedinClientID: process.env.LINKEDIN_CLIENT_ID,
     linkedinClientSecret: process.env.LINKEDIN_CLIENT_SECRET,
-    twitterClientID: process.env.TWITTER_CLIENT_ID,
-    twitterClientSecret: process.env.TWITTER_CLIENT_SECRET,
+    // twitterClientID: process.env.TWITTER_CLIENT_ID,
+    // twitterClientSecret: process.env.TWITTER_CLIENT_SECRET,
 };
