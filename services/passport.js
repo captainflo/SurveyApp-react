@@ -73,23 +73,16 @@ passport.use(
       callbackURL: "/auth/google/callback",
       proxy: true
     },
-    (accessToken, refreshToken, profile, done) => {
-      console.log('access token',accessToken);
-      console.log('refresh token',refreshToken);
-      console.log('profile:',profile);
-
+    async (accessToken, refreshToken, profile, done) => {
       // don't have double User with same profileID
-      User.findOne({ googleId: profile.id }).then(existingUser => {
+      const existingUser = await User.findOne({ googleId: profile.id })
         if (existingUser) {
           // We already have record with given profile ID
-          done(null, existingUser);
-        } else {
-          // We don't have a user with this ID, make a new record
-          new User({ googleId: profile.id })
-            .save()
-            .then(user => done(null, user));
-        }
-      });
+          return done(null, existingUser);
+        } 
+        // We don't have a user with this ID, make a new record
+        const user = await new User({ googleId: profile.id }).save()
+        done(null, user); 
     }
   )
 );
