@@ -1,14 +1,29 @@
 const passport = require("passport");
+const Authentication = require ('../controllers/authentication');
+const passportService = require ('../services/passport');
+
+const requireAuth = passport.authenticate('jwt',{session: false});
+const requireSignin = passport.authenticate('local',{session: false});
 
 module.exports = app => {
+  
+  // Normal Authentication - email - password
+  app.get('/', requireAuth, function(req,res){
+    res.send({hi: 'there'});
+  })
+  app.post('/signin', requireSignin, Authentication.signin);
+  app.post('/signup', Authentication.signup);
+  
+
   // Google authenticate
+  app.get("/auth/google/callback", passport.authenticate("google"));
   app.get(
     "/auth/google",
     passport.authenticate("google", {
       scope: ["profile", "email"]
     })
   );
-  app.get("/auth/google/callback", passport.authenticate("google"));
+
 
   // Instagram authenticate
   app.get("/auth/instagram", passport.authenticate("instagram"));
