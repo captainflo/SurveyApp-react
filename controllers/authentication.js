@@ -1,5 +1,5 @@
 const User = require('../models/User');
-const jwt = require('jwt-simple');
+const jwt = require('jwt-simple'); // create token
 const keys = require('../config/keys')
 
 function tokenForUser(user){
@@ -25,10 +25,12 @@ exports.signup = function (req, res, next){
     User.findOne({email: email}, function(error, existingUser){
         if (error) {return next(error);}
 
+        // if a user with email does exist, return error
         if (existingUser){
             return res.status(422).send({error: 'Email is in use'});
         }
 
+        // if a user with email does Not exist, create and save user record 
         const user = new User({
             email: email,
             password: password
@@ -36,6 +38,7 @@ exports.signup = function (req, res, next){
 
         user.save(function(error){
             if (error) {return next(error);}
+            // Repond to request indicating the user was created
             res.json({token: tokenForUser(user)});
         })
     })
