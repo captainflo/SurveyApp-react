@@ -7,9 +7,9 @@ const requireSignin = passport.authenticate("local", { session: false });
 
 module.exports = app => {
   // // Normal Authentication - email - password
-  // app.get("/", function(req, res) {
-  //   res.send({ hi: "you are connected" });
-  // });
+  app.get("/", function(req, res) {
+    res.send({ hi: "you are connected" });
+  });
 
   app.post("/signin", requireSignin, Authentication.signin);
   app.post("/signup", Authentication.signup);
@@ -32,13 +32,12 @@ module.exports = app => {
 
   // Instagram authenticate
   app.get("/auth/instagram", passport.authenticate("instagram"));
-
   app.get(
     "/auth/instagram/callback",
-    passport.authenticate("instagram", { failureRedirect: "/login" }),
+    passport.authenticate("instagram", { failureRedirect: "/" }),
     function(req, res) {
       // Successful authentication, redirect home.
-      res.redirect("/");
+      res.redirect("/surveys");
     }
   );
 
@@ -80,5 +79,6 @@ module.exports = app => {
 
   app.get("/api/current_user", (req, res) => {
     res.send(req.user);
+    console.log(req.user);
   });
 };

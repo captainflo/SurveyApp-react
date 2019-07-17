@@ -10,7 +10,8 @@ const userSchema = new Schema({
     linkedinId: String,
     twitterId: String,
     email: {type: String, unique: true, lowercase: true},
-    password: String
+    password: String,
+    credits: {type: Number, default: 0}
 });
 
 // On save Hook, encrypt password
