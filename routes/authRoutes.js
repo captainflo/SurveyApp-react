@@ -41,8 +41,8 @@ module.exports = app => {
   app.get(
     "/auth/facebook/callback",
     passport.authenticate("facebook", {
-      successRedirect: "/",
-      failureRedirect: "/login"
+      successRedirect: "/surveys",
+      failureRedirect: "/"
     })
   );
 
@@ -51,8 +51,8 @@ module.exports = app => {
   app.get(
     "/auth/linkedin/callback",
     passport.authenticate("linkedin", {
-      successRedirect: "/",
-      failureRedirect: "/login"
+      successRedirect: "/surveys",
+      failureRedirect: "/"
     })
   );
 
@@ -61,19 +61,18 @@ module.exports = app => {
   app.get(
     "/auth/twitter/callback",
     passport.authenticate("twitter", {
-      successRedirect: "/",
-      failureRedirect: "/login"
+      successRedirect: "/surveys",
+      failureRedirect: "/"
     })
   );
 
   // to logout by http request
   app.get("/api/logout", (req, res) => {
     req.logout();
-    res.redirect('/')
+    res.redirect("/");
   });
 
-  app.get("/api/current_user", (req, res) => {
+  app.get("/api/current_user",(req, res) => {
     res.send(req.user);
-    console.log(req.user);
   });
 };

@@ -12,8 +12,9 @@ module.exports = {
     linkedinClientSecret: process.env.LINKEDIN_CLIENT_SECRET,
     secret: process.env.LOCAL_SECRET,
     stripePublishableKey: process.env.STRIPE_PUBLISHABLE_KEY,
-    stripeSecretKey: process.env.STRIPE_SECRET_KEY
-    
+    stripeSecretKey: process.env.STRIPE_SECRET_KEY,
+    sendGridKey: process.env.SEND_GRID_KEY,
+    redirectDomain: process.env.REDIRECT_DOMAIN
     // twitterClientID: process.env.TWITTER_CLIENT_ID,
     // twitterClientSecret: process.env.TWITTER_CLIENT_SECRET,
 };

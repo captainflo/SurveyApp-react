@@ -5,8 +5,8 @@ import * as actions from '../actions';
 
 import Header from "./Header";
 import Landing from './Landing';
-const Dashboard = () => <h2>Dashboard</h2>;
-const SurveyNew = () => <h2>SurveyNew</h2>;
+import Dashboard from './Dashbord';
+import SurveyNew from './surveys/surveyNew';
 
 
 class App extends React.Component {
@@ -16,7 +16,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="">
+      <div className="container">
         <BrowserRouter>
           <div>
             <Header />
