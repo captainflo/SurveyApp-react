@@ -19,7 +19,7 @@ class SurveyList extends React.Component {
                         </p>
                         <div className="card-action">
                             <p>Yes: {survey.yes}</p>
-                            <p>Yes: {survey.No}</p>
+                            <p>no: {survey.no}</p>
                         </div>
                     </div>
                 </div>
