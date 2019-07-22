@@ -10,16 +10,17 @@ class SurveyList extends React.Component {
     renderSurveys(){
         return this.props.surveys.reverse().map(survey =>{
             return (
-                <div className="card pink lighten-2" key={survey._id}>
+                <div className="card blue lighten-1" key={survey._id}>
                     <div className="card-content white-text">
                         <span className="card-title">{survey.title}</span>
-                        <p>{survey.body}</p>
+                        <hr></hr>
+                        <p><i class="far fa-comment-dots"></i> {survey.body}</p>
                         <p className="right">
-                            Sent On: {new Date(survey.dateSent).toLocaleDateString()}
+                        <i className="fas fa-calendar-week"></i> Sent On: {new Date(survey.dateSent).toLocaleDateString()}
                         </p>
                         <div className="card-action">
-                            <p>Yes: {survey.yes}</p>
-                            <p>no: {survey.no}</p>
+                            <p><i className="fas fa-check-circle"></i> Yes: {survey.yes}</p>
+                            <p><i className="fas fa-times-circle"></i> no: {survey.no}</p>
                         </div>
                     </div>
                 </div>

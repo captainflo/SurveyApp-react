@@ -1,0 +1,14 @@
+ /* label focus color */
+ input:not([type]):focus:not([readonly]) + label {
+    color: #c51162 ;
+  }
+  /* label underline focus color */
+  input:not([type]):focus:not([readonly]) {
+    border-bottom: 1px solid #c51162 ;
+    box-shadow: 0 1px 0 0 #c51162 ;
+  }
+
+  label {
+    font-size: 18px;
+    color: #c51162;
+}

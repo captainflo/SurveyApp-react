@@ -43,9 +43,9 @@ class Header extends React.Component{
                 ]
             default:
                 return [
-                    <li key="3" style={{margin: '0 10px'}}>Credits: {this.props.auth.credits}</li>,
-                    <li key="1"><a href="#"><Payments/></a></li>,
-                    <li key="2"><a href="/api/logout">Logout</a></li>
+                    <li key="3" style={{margin: '0 10px'}}><i className="fas fa-coins"></i> Credits: {this.props.auth.credits}</li>,
+                    <li key="1"><a href="#"><i className="fab fa-cc-stripe"></i> <Payments/></a></li>,
+                    <li key="2"><a href="/api/logout"><i className="fas fa-sign-out-alt"></i> Logout</a></li>
                 ]  
         }
     }

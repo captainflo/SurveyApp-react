@@ -1,6 +1,7 @@
 // SurveyField contain logic to render a single
 //  label and text input
 import React from "react";
+import './surveyFields.css';
 
 export default ({ input, label, meta: {error, touched }}) => {
  
