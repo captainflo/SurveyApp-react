@@ -16,7 +16,7 @@ const SurveyReview = ({ onCancel, formValues, submitSurvey, history }) => {
     );
   });
   return (
-    <div>
+    <div  style={{padding:'20px'}} className='card'>
       <h5>this is my SurveyReview</h5>
       {reviewFields}
       <button

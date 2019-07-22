@@ -19,7 +19,7 @@ class SurveyNew extends React.Component {
   }
 
   render() {
-    return <div>{this.renderContent()}</div>;
+    return <div style={{padding:'30px'}} className="container">{this.renderContent()}</div>;
   }
 }
 

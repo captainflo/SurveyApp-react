@@ -8,16 +8,19 @@ import Logo from  './images/logo.png';
 class Header extends React.Component{
     renderSocial(){
         return(
-            <div>
-                <h3>Login </h3><hr></hr>
+            <div className="center">
+                <h3 style={{paddingBottom: '10px'}}>Login <i className="fas fa-sign-in-alt"></i></h3><hr></hr>
+                <ul>
                 <li style={{listStyle:'none', paddingBottom: '10px'}}><a href="/auth/google" className="waves-effect waves-light btn social google">
                 <i className="fab fa-google"></i> Sign in with google</a></li>
                 <li style={{listStyle:'none', paddingBottom: '10px'}}><a href="/auth/linkedin" className="waves-effect waves-light btn social linkedin">
-                <i class="fab fa-linkedin"></i> Sign in with linkedin</a></li>
+                <i className="fab fa-linkedin"></i> Sign in with linkedin</a></li>
                 <li style={{listStyle:'none', paddingBottom: '10px'}}><a href='/auth/facebook'className="waves-effect waves-light btn social facebook">
-                <i class="fab fa-facebook"></i> Sign in with facebook</a></li>
+                <i className="fab fa-facebook"></i> Sign in with facebook</a></li>
                 <li style={{listStyle:'none', paddingBottom: '10px'}}><a href="/auth/instagram" className="waves-effect waves-light btn social instagram">
-                <i class="fab fa-instagram"></i> Sign in with instagram</a></li>
+                <i className="fab fa-instagram"></i> Sign in with instagram</a></li>
+                </ul>
+                
             </div>
             
         )
@@ -29,8 +32,8 @@ class Header extends React.Component{
                 return;
             case false:
                 return [
-                <li><a><i class="far fa-comment-dots"></i> Contact</a></li>,
-                <li>
+                <li key="1"><Link to='/'><i className="far fa-comment-dots"></i> Contact</Link></li>,
+                <li key="2">
                     <Modal
                         
                         trigger={<a><i className="fas fa-user-circle"></i> Sign In</a>}>
@@ -40,8 +43,8 @@ class Header extends React.Component{
                 ]
             default:
                 return [
-                    <li key="1"><Payments/></li>,
                     <li key="3" style={{margin: '0 10px'}}>Credits: {this.props.auth.credits}</li>,
+                    <li key="1"><a href="#"><Payments/></a></li>,
                     <li key="2"><a href="/api/logout">Logout</a></li>
                 ]  
         }
@@ -53,7 +56,7 @@ class Header extends React.Component{
             <nav>
                 <div className="nav-wrapper pink darken-3">
                 < Link to={this.props.auth ? '/surveys' : '/'}><span style={{marginLeft:'60px'}} className="brand-logo hide-on-med-and-down">Emaily</span> <img className="brand-logo" style={{width:'60px', padding:'10px'}} src={Logo} alt={"logo"}/></Link>
-                <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
+                <Link to='#' data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></Link>
                 <ul className="right hide-on-med-and-down">
                 {this.renderContent()}
                 </ul>

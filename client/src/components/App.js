@@ -33,14 +33,14 @@ class App extends React.Component {
         </BrowserRouter>
         <Footer
           copyrights="Florian Lahitte 2019 Copyright Text"
-          moreLinks={<a />}
-          links={<ul />}
           className="pink darken-3"
         >
-          <h5 className="white-text">Footer Content</h5>
-          <p className="grey-text text-lighten-4">
-            You can use rows and columns here to organize your footer content.
-          </p>
+          <h5 className="white-text">Links</h5>
+          <ul className="grey-text text-lighten-4">
+            <li><a style={{color:'white'}} href="https://github.com/captainflo"><i className="fab fa-github"></i> Github</a></li>
+            <li><a style={{color:'white'}} href="https://www.linkedin.com/in/florianlahitte/"><i className="fab fa-linkedin"></i> Linkedin</a></li>
+            <li><a style={{color:'white'}} href="http://floweb.co/"><i className="fas fa-folder-open"></i> Portfolio</a></li>
+          </ul>
         </Footer>
       </div>
     );

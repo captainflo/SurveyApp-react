@@ -13,7 +13,7 @@ class Payments extends React.Component{
                 name="Emaily"
                 description="$5 for 5 email credit"
             >
-                <button className='btn'>Add Credits</button>
+                <span>Add Credits</span>
             </StripeCheckout>
         )
     }

@@ -3,7 +3,7 @@ import { Carousel } from "react-materialize";
 import "./landing.css";
 
 import NewYork from "./images/new-york.jpg";
-import react from "./images/react.png";
+import reactlogo from "./images/react.png";
 import github from "./images/github.png";
 import googleauth from "./images/google-authenticator.png";
 import heroku from "./images/heroku.png";
@@ -14,15 +14,16 @@ import node from "./images/node.png";
 import redux from "./images/redux.png";
 import sendgrid from "./images/sengrid.png";
 import stripe from "./images/stripe.png";
+import Logo from './images/logo.png'
 
 
 
 const Landing = () => {
   return (
     <div>
-      <div class="container-img">
+      <div className="container-img">
         <img style={{ width: "100%" }} src={NewYork} alt={"NewYork"} />
-        <div class="centered">
+        <div className="centered">
           <h5>
             Helps your customers to give reviews and provide valuable feedback
             via emails.
@@ -33,7 +34,7 @@ const Landing = () => {
       <Carousel
         images={[
           <div>
-            <img style={{ width: "100%" }} src={react} alt={"React"} />
+            <img style={{ width: "100%" }} src={reactlogo} alt={"reactlogo"} />
             <p className="center">React</p>
           </div>,
           <div>
