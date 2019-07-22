@@ -2,15 +2,41 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Payments from './Payments';
+import {Modal} from 'react-materialize';
+import Logo from  './logo.png';
 
 class Header extends React.Component{
+    renderSocial(){
+        return(
+            <div>
+                <li style={{listStyle:'none', paddingBottom: '10px'}}><a href="/auth/google" className="waves-effect waves-light btn social google">
+                <i className="fab fa-google"></i> Sign in with google</a></li>
+                <li style={{listStyle:'none', paddingBottom: '10px'}}><a href="/auth/linkedin" className="waves-effect waves-light btn social linkedin">
+                <i class="fab fa-linkedin"></i> Sign in with linkedin</a></li>
+                <li style={{listStyle:'none', paddingBottom: '10px'}}><a href='/auth/facebook'className="waves-effect waves-light btn social facebook">
+                <i class="fab fa-facebook"></i> Sign in with facebook</a></li>
+                <li style={{listStyle:'none', paddingBottom: '10px'}}><a href="/auth/instagram" className="waves-effect waves-light btn social instagram">
+                <i class="fab fa-instagram"></i> Sign in with instagram</a></li>
+            </div>
+            
+        )
+    }
 
     renderContent(){
         switch (this.props.auth) {
             case null:
                 return;
             case false:
-                return <li><a href="/auth/google">Login With Google</a></li>
+                return [
+                <li><a>Contact</a></li>,
+                <li>
+                    <Modal
+                        header='Login'
+                        trigger={<a><i className="fas fa-user-circle"></i> Sign In</a>}>
+                        <p>{this.renderSocial()}</p>
+                    </Modal>
+                </li>
+                ]
             default:
                 return [
                     <li key="1"><Payments/></li>,
@@ -20,16 +46,24 @@ class Header extends React.Component{
         }
     }
 
+    
+
     render(){
         return(
-            <nav className="nav-wrapper">
-                <div>
-                    < Link to={this.props.auth ? '/surveys' : '/'}  className="left brand-logo">Emaily</Link>
-                    <ul id="nav-mobile" className="right">
-                        {this.renderContent()}
-                    </ul>
+            <div>
+            <nav>
+                <div className="nav-wrapper">
+                < Link to={this.props.auth ? '/surveys' : '/'}><span style={{marginLeft:'60px'}} className="brand-logo hide-on-med-and-down">Emaily</span> <img className="brand-logo" style={{width:'60px', padding:'10px'}} src={Logo} alt={"logo"}/></Link>
+                <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
+                <ul className="right hide-on-med-and-down">
+                {this.renderContent()}
+                </ul>
                 </div>
             </nav>
+            <ul className="sidenav" id="mobile-demo">
+                {this.renderContent()}
+            </ul>
+        </div>
         )
     }
 }

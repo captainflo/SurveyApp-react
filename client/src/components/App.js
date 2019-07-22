@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from 'react-redux';
 import * as actions from '../actions';
+import M from "materialize-css/dist/js/materialize.min.js";
 
 import Header from "./Header";
 import Landing from './Landing';
@@ -12,11 +13,16 @@ import SurveyNew from './surveys/surveyNew';
 class App extends React.Component {
     componentDidMount(){
         this.props.fetchUser();
+        // Sidebar
+        const elem = document.querySelector(".sidenav");
+        M.Sidenav.init(elem, {
+            edge: "left",
+            inDuration: 250
+        });
     }
-
   render() {
     return (
-      <div className="container">
+      <div>
         <BrowserRouter>
           <div>
             <Header />
