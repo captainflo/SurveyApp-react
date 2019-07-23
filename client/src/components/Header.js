@@ -20,7 +20,6 @@ class Header extends React.Component{
                 <li style={{listStyle:'none', paddingBottom: '10px'}}><a href="/auth/instagram" className="waves-effect waves-light btn social instagram">
                 <i className="fab fa-instagram"></i> Sign in with instagram</a></li>
                 </ul>
-                
             </div>
             
         )
@@ -32,19 +31,18 @@ class Header extends React.Component{
                 return;
             case false:
                 return [
-                <li key="1"><Link to='/'><i className="far fa-comment-dots"></i> Contact</Link></li>,
+                <li key="1"><a href={"mailto:lahitte.florian@gmail.com" }><i className="far fa-comment-dots"></i> Contact</a></li>,
                 <li key="2">
                     <Modal
-                        
-                        trigger={<a><i className="fas fa-user-circle"></i> Sign In</a>}>
-                        <p>{this.renderSocial()}</p>
+                        trigger={<a href='#/'><i className="fas fa-user-circle"></i> Sign In</a>}>
+                        <div>{this.renderSocial()}</div>
                     </Modal>
                 </li>
                 ]
             default:
                 return [
                     <li key="3" style={{margin: '0 10px'}}><i className="fas fa-coins"></i> Credits: {this.props.auth.credits}</li>,
-                    <li key="1"><a href="#"><i className="fab fa-cc-stripe"></i> <Payments/></a></li>,
+                    <li key="1"><a href='#/'><i className="fab fa-cc-stripe"></i> <Payments/></a></li>,
                     <li key="2"><a href="/api/logout"><i className="fas fa-sign-out-alt"></i> Logout</a></li>
                 ]  
         }
@@ -58,7 +56,7 @@ class Header extends React.Component{
                 < Link to={this.props.auth ? '/surveys' : '/'}><span style={{marginLeft:'60px'}} className="brand-logo hide-on-med-and-down">Emaily</span> <img className="brand-logo" style={{width:'60px', padding:'10px'}} src={Logo} alt={"logo"}/></Link>
                 <Link to='#' data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></Link>
                 <ul className="right hide-on-med-and-down">
-                {this.renderContent()}
+                    {this.renderContent()}
                 </ul>
                 </div>
             </nav>

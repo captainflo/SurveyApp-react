@@ -1,14 +1,12 @@
-body{
-  font-family: 'Montserrat', sans-serif;
-}
-
-
 .container-img {
     position: relative;
     text-align: center;
     color: white;
-    
   }
+
+body{
+  font-family: 'Montserrat';
+}
   
 .container-img img{
     -webkit-filter: brightness(65%);
@@ -17,6 +15,7 @@ body{
   /* Centered text */
   .centered {
     position: absolute;
+    width: 80%;
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);

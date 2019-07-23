@@ -1,6 +1,7 @@
 import React from "react";
 import { Carousel } from "react-materialize";
 import "./landing.css";
+import { Footer } from "react-materialize";
 
 import NewYork from "./images/new-york.jpg";
 import reactlogo from "./images/react.png";
@@ -14,7 +15,7 @@ import node from "./images/node.png";
 import redux from "./images/redux.png";
 import sendgrid from "./images/sengrid.png";
 import stripe from "./images/stripe.png";
-import Logo from './images/logo.png'
+import Logo from "./images/logo.png";
 
 
 
@@ -24,6 +25,7 @@ const Landing = () => {
       <div className="container-img">
         <img style={{ width: "100%" }} src={NewYork} alt={"NewYork"} />
         <div className="centered">
+        <img  className="hide-on-med-and-down" style={{ width: "10%" }} src={Logo} alt={"logo"} />
           <h5>
             Helps your customers to give reviews and provide valuable feedback
             via emails.
@@ -80,6 +82,17 @@ const Landing = () => {
         ]}
         options={ {padding: 200}}
       />
+      <Footer
+          copyrights="Florian Lahitte 2019 Copyright Text"
+          className="pink darken-3 " 
+        > 
+          <h5 className="white-text">Links</h5>
+          <ul className="grey-text text-lighten-4">
+            <li><a style={{color:'white'}} href="https://github.com/captainflo"><i className="fab fa-github"></i> Github</a></li>
+            <li><a style={{color:'white'}} href="https://www.linkedin.com/in/florianlahitte/"><i className="fab fa-linkedin"></i> Linkedin</a></li>
+            <li><a style={{color:'white'}} href="http://floweb.co/"><i className="fas fa-folder-open"></i> Portfolio</a></li>
+          </ul>
+        </Footer>
     </div>
   );
 };
