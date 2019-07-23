@@ -6,7 +6,11 @@ import formFields from "./formFields";
 import * as actions from "../../actions/index";
 import { withRouter } from 'react-router-dom'
 
-const SurveyReview = ({ onCancel, formValues, submitSurvey, history }) => {
+const SurveyReview = ({ onCancel, formValues, submitSurvey, history, credit }) => {
+  if (credit === 0){
+    return <div>You don't have enougth credit, please add some credit!</div>
+  }
+
   const reviewFields = _.map(formFields, ({ name, label }) => {
     return (
       <div key={name}>
@@ -39,7 +43,8 @@ const SurveyReview = ({ onCancel, formValues, submitSurvey, history }) => {
 };
 
 function mapStateToProps(state) {
-  return { formValues: state.form.surveyForm.values };
+  return { formValues: state.form.surveyForm.values,
+          credit: state.auth.credits };
 }
 
 export default connect(
