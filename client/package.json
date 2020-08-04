@@ -8,7 +8,7 @@
     "install": "^0.13.0",
     "materialize-css": "^1.0.0-rc.2",
     "materialize-social": "^1.0.3",
-    "npm": "^6.10.1",
+    "npm": "^6.14.6",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-materialize": "^3.3.3",
