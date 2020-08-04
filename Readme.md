@@ -12,7 +12,6 @@ Helps your customers to give reviews and provide valuable feedback via emails.
 
 - node
 - npm
-- express
 - axios
 - passport-google-oauth20
 - passport-linkedin-oauth2
